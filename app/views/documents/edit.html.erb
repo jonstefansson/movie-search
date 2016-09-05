@@ -1,0 +1,7 @@
+<div class="container">
+
+  <h2><%= @document.title %></h2>
+
+  <%= render 'form', document: @document, disabled: false, form_options: {url: document_path(@document.id), method: :patch, submit: 'Update'} %>
+
+</div>

@@ -1,0 +1,78 @@
+<%= form_for(document, url: form_options[:url], method: form_options[:method]) do |f| %>
+  <% if document.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(document.errors.count, "error") %> prohibited this document from being saved:</h2>
+
+      <ul>
+      <% document.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="row">
+
+    <div class="form-group col-sm-5">
+      <%= f.label :title, 'Title', class: 'form-label' %>
+      <%= f.text_field :title, class: 'form-control', disabled: disabled %>
+    </div>
+
+    <div class="form-group col-sm-7">
+      <%= f.label :capsule, 'Capsule', class: 'form-label' %>
+      <%= f.text_area :capsule, class: 'form-control', cols: 80, rows: 5, disabled: disabled %>
+    </div>
+
+  </div>
+
+  <div class="row">
+
+    <div class="form-group col-sm-3">
+      <%= f.label :release_date, 'Release', class: 'form-label' %>
+      <%= f.text_field :release_date, class: 'form-control', type: 'date', disabled: disabled %>
+    </div>
+
+    <div class="form-group col-sm-3">
+      <%= f.label :vod_date, 'VOD', class: 'form-label' %>
+      <%= f.text_field :vod_date, class: 'form-control', type: 'date', disabled: disabled %>
+    </div>
+
+    <div class="form-group col-sm-3">
+      <%= f.label :blu_ray_date, 'Blu-Ray', class: 'form-label' %>
+      <%= f.text_field :blu_ray_date, class: 'form-control', type: 'date', disabled: disabled %>
+    </div>
+
+    <div class="form-group col-sm-3">
+      <%= f.label :premium_date, 'TV', class: 'form-label' %>
+      <%= f.text_field :premium_date, class: 'form-control', type: 'date', disabled: disabled %>
+    </div>
+
+  </div>
+
+  <div class="form-check">
+    <%= f.label(:watched, class: 'form-check-label') do %>
+      <%= f.check_box(:watched, class: 'form-check-input', disabled: disabled) %>
+      Watched
+    <% end %>
+  </div>
+
+  <div class="row">
+
+    <div class="form-group col-sm-4">
+      <%= f.label :tags, 'Tags', class: 'form-label' %>
+      <% document.tags.each_with_index do |tag, index| %>
+          <%= text_field_tag("document[tags][#{index}]", tag, class: 'form-control', disabled: disabled) %>
+      <% end %>
+    </div>
+
+    <div id="tag-controls" class="form-group col-sm-8"></div>
+
+  </div>
+
+  <div class="actions">
+    <% unless disabled %>
+      <%= f.submit(form_options[:submit], class: 'btn btn-primary') %>
+    <% end %>
+    <%= link_to('Cancel', documents_path, html_options = {class: 'btn btn-secondary'}) %>
+  </div>
+<% end %>
