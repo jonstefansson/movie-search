@@ -2,6 +2,7 @@ require 'elasticsearch/dsl'
 
 class DocumentsController < ApplicationController
   include Elasticsearch::DSL
+  include SearchHelper
 
   before_action :set_document, only: [:show, :edit, :update, :destroy]
 
@@ -18,11 +19,8 @@ class DocumentsController < ApplicationController
     end
     response = client.search index: 'movies', body: definition
     hits = response.fetch('hits')
-    logger.ap 'Total Hits: %d' % hits.fetch('total')
     @documents = hits.fetch('hits').collect do |hit|
-      document = Document.build_from_hit(hit)
-      ap(document)
-      document
+      Document.new(hit_to_hash(hit))
     end
   end
 
@@ -89,8 +87,7 @@ class DocumentsController < ApplicationController
 
   # Use callbacks to share common setup or constraints between actions.
   def set_document
-    response = client.get index: 'movies', id: params[:id]
-    @document = Document.build_from_hit(response)
+    @document = Document.new(get_document_attributes(params[:id]))
   end
 
   # Never trust parameters from the scary internet, only allow the white list through.
