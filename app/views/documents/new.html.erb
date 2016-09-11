@@ -1,7 +1,5 @@
-<div class="container">
+<p id="notice"><%= notice %></p>
 
-  <h2>New Movie</h2>
+<h2 class="ui header">New Movie</h2>
 
-  <%= render 'form', document: @document, disabled: false, form_options: {url: documents_path, method: :post, submit: 'Create'} %>
-
-</div>
+<%= render 'form', document: @document, disabled: false, form_options: {url: documents_path, method: :post, submit: 'Create'} %>

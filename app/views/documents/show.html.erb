@@ -1,9 +1,7 @@
-<div class="container">
+<p id="notice"><%= notice %></p>
 
-  <h2><%= @document.title %></h2>
+<h2 class="ui header"><%= @document.title %></h2>
 
-  <p id="notice"><%= notice %></p>
+<p id="notice"><%= notice %></p>
 
-  <%= render 'form', document: @document, disabled: true, form_options: {url: document_path(@document.id), method: :get, submit: 'Show'} %>
-
-</div>
+<%= render 'form', document: @document, disabled: true, form_options: {url: document_path(@document.id), method: :get, submit: 'Show'} %>

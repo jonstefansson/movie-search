@@ -1,4 +1,4 @@
-<%= form_for(document, url: form_options[:url], method: form_options[:method]) do |f| %>
+<%= form_for(document, url: form_options[:url], method: form_options[:method], html: {class: 'ui form'}) do |f| %>
   <% if document.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(document.errors.count, "error") %> prohibited this document from being saved:</h2>
@@ -13,66 +13,72 @@
 
   <div class="row">
 
-    <div class="form-group col-sm-5">
-      <%= f.label :title, 'Title', class: 'form-label' %>
-      <%= f.text_field :title, class: 'form-control', disabled: disabled %>
+    <div class="field">
+      <%= f.label :title, 'Title' %>
+      <%= f.text_field :title, disabled: disabled %>
     </div>
 
-    <div class="form-group col-sm-7">
-      <%= f.label :capsule, 'Capsule', class: 'form-label' %>
-      <%= f.text_area :capsule, class: 'form-control', cols: 80, rows: 5, disabled: disabled %>
-    </div>
-
-  </div>
-
-  <div class="row">
-
-    <div class="form-group col-sm-3">
-      <%= f.label :release_date, 'Release', class: 'form-label' %>
-      <%= f.text_field :release_date, class: 'form-control', type: 'date', disabled: disabled %>
-    </div>
-
-    <div class="form-group col-sm-3">
-      <%= f.label :vod_date, 'VOD', class: 'form-label' %>
-      <%= f.text_field :vod_date, class: 'form-control', type: 'date', disabled: disabled %>
-    </div>
-
-    <div class="form-group col-sm-3">
-      <%= f.label :blu_ray_date, 'Blu-Ray', class: 'form-label' %>
-      <%= f.text_field :blu_ray_date, class: 'form-control', type: 'date', disabled: disabled %>
-    </div>
-
-    <div class="form-group col-sm-3">
-      <%= f.label :premium_date, 'TV', class: 'form-label' %>
-      <%= f.text_field :premium_date, class: 'form-control', type: 'date', disabled: disabled %>
+    <div class="field">
+      <%= f.label :capsule, 'Capsule' %>
+      <%= f.text_area :capsule, cols: 80, rows: 5, disabled: disabled %>
     </div>
 
   </div>
 
-  <div class="form-check">
-    <%= f.label(:watched, class: 'form-check-label') do %>
-      <%= f.check_box(:watched, class: 'form-check-input', disabled: disabled) %>
-      Watched
+  <div class="ui two column grid container" style="margin-top: 0.5em;">
+
+    <div class="column">
+      <div class="field">
+        <%= f.label :release_date, 'Release' %>
+        <%= f.text_field :release_date, type: 'date', disabled: disabled %>
+      </div>
+    </div>
+
+    <div class="column">
+      <div class="field">
+        <%= f.label :vod_date, 'VOD' %>
+        <%= f.text_field :vod_date, type: 'date', disabled: disabled %>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="ui two column grid container" style="margin-top: 0.5em;">
+
+    <div class="column">
+      <div class="field">
+        <%= f.label :blu_ray_date, 'Blu-Ray' %>
+        <%= f.text_field :blu_ray_date, type: 'date', disabled: disabled %>
+      </div>
+    </div>
+
+    <div class="column">
+      <div class="field">
+        <%= f.label :premium_date, 'TV' %>
+        <%= f.text_field :premium_date, type: 'date', disabled: disabled %>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="field" style="margin-top: 1em">
+    <div class="ui checkbox">
+      <%= f.check_box(:watched, disabled: disabled) %>
+      <%= f.label(:watched, 'Watched') %>
+    </div>
+  </div>
+
+  <div class="field">
+    <%= f.label :tags, 'Tags' %>
+    <% document.try(:tags).try(:each_with_index) do |tag, index| %>
+        <a class="ui tag label"><%= tag %></a>
     <% end %>
-  </div>
-
-  <div class="row">
-
-    <div class="form-group col-sm-4">
-      <%= f.label :tags, 'Tags', class: 'form-label' %>
-      <% document.tags.each_with_index do |tag, index| %>
-          <%= text_field_tag("document[tags][#{index}]", tag, class: 'form-control', disabled: disabled) %>
-      <% end %>
-    </div>
-
-    <div id="tag-controls" class="form-group col-sm-8"></div>
-
   </div>
 
   <div class="actions">
     <% unless disabled %>
-      <%= f.submit(form_options[:submit], class: 'btn btn-primary') %>
+      <%= f.submit(form_options[:submit], class: 'ui button primary') %>
     <% end %>
-    <%= link_to('Cancel', documents_path, html_options = {class: 'btn btn-secondary'}) %>
+    <%= link_to('Cancel', documents_path, html_options = {class: 'ui button secondary'}) %>
   </div>
 <% end %>

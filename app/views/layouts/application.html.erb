@@ -9,6 +9,22 @@
   </head>
 
   <body>
-    <%= yield %>
+    <div class="ui top attached menu">
+      <div>
+        <%= link_to 'Movie Search', :root, class: 'header item' %>
+      </div>
+      <div class="right menu">
+        <div class="ui right aligned category search item">
+          <div class="ui transparent icon input">
+            <input class="prompt" type="text" placeholder="Search...">
+            <i class="search link icon"></i>
+          </div>
+          <div class="results"></div>
+        </div>
+      </div>
+    </div>
+    <div class="ui main text container">
+      <%= yield %>
+    </div>
   </body>
 </html>
