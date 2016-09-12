@@ -5,6 +5,7 @@
   capsule: An Irish immigrant lands in 1950s Brooklyn, where she quickly falls into a 
     romance with a local. When her past catches up with her, however, she must choose 
     between two countries and the lives that exist within.
+  watched: false
   tags:
   - Saoirse Ronan
 - title: 'The 33'
@@ -12,6 +13,7 @@
   vod_date: '2016-08-06'
   capsule: Based on the real-life event, when a gold and copper mine collapses, it 
     traps 33 miners underground for 69 days.
+  watched: false
   tags:
   - Antonio Banderas
   - Juliette Binoche
@@ -22,6 +24,7 @@
   capsule: A frontiersman on a fur trading expedition in the 1820s fights for 
     survival after being mauled by a bear and left for dead by members of his 
     own hunting team.
+  watched: false
   tags:
   - Leonardo DiCaprio
   - Tom Hardy
@@ -30,6 +33,7 @@
   release_date: '2016-07-29'
   capsule: The CIA's most dangerous former operative is drawn out of hiding to 
     uncover more explosive truths about his past.
+  watched: false
   tags:
     - Matt Damon
     - Tommy Lee Jones
@@ -40,6 +44,7 @@
   capsule: The USS Enterprise crew explores the furthest reaches of uncharted 
     space, where they encounter a new ruthless enemy who puts them and 
     everything the Federation stands for to the test.
+  watched: false
   tags:
     - Chris Pine
     - Zachary Quinto
@@ -48,6 +53,7 @@
   capsule: In the dead of a Wyoming winter, a bounty hunter and his prisoner 
     find shelter in a cabin currently inhabited by a collection of nefarious 
     characters.
+  watched: false
   tags:
     - Quentin Tarantino
     - Samuel L. Jackson
@@ -57,6 +63,7 @@
   capsule: The true story of how the Boston Globe uncovered the massive scandal 
     of child molestation and cover-up within the local Catholic Archdiocese, shaking 
     the entire Catholic Church to its core.
+  watched: true
   tags:
     - Mark Ruffalo
     - Michael Keaton
@@ -65,6 +72,7 @@
   release_date: '2015-10-02'
   capsule: An idealistic FBI agent is enlisted by a government task force to aid 
     in the escalating war against drugs at the border area between the U.S. and Mexico.
+  watched: false
   tags:
     - Emily Blunt
     - Josh Brolin
@@ -73,12 +81,14 @@
   release_date: '2016-06-24'
   capsule: A mere 200 yards from shore, surfer Nancy is attacked by a great white 
     shark, with her short journey to safety becoming the ultimate contest of wills.
+  watched: false
   tags:
     - Blake Lively
 - title: Café Society
   release_date: '2016-08-05'
   capsule: In the 1930s, a young Bronx native moves to Hollywood where he falls 
     in love with the secretary of his powerful uncle, an agent to the stars.
+  watched: false
   tags:
     - Woody Allen
     - Jesse Eisenberg
@@ -90,6 +100,7 @@
   capsule: After a threat from the tiger Shere Khan forces him to flee the jungle, 
     a man-cub named Mowgli embarks on a journey of self discovery with the help of 
     panther, Bagheera, and free spirited bear, Baloo.
+  watched: true
   tags:
     - Disney
     - Bill Murray
@@ -100,6 +111,7 @@
 - title: Hail, Caesar!
   release_date: '2016-02-05'
   capsule: A Hollywood fixer in the 1950s works to keep the studio's stars in line.
+  watched: false
   tags:
     - George Clooney
     - Ethan Coen
@@ -111,6 +123,7 @@
   release_date: '2016-01-29'
   capsule: The Coast Guard makes a daring rescue attempt off the coast of Cape Cod 
     after a pair of oil tankers are destroyed during a blizzard in 1952.
+  watched: false
   tags:
     - Chris Pine
     - Casey Affleck
@@ -121,6 +134,7 @@
   capsule: When a member of a popular New York City improv troupe gets a huge break, 
     the rest of the group - all best friends - start to realize that not everyone is 
     going to make it after all.
+  watched: false
   tags:
     - Keegan-Michael Key
     - Gillian Jacobs
