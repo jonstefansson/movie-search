@@ -19,3 +19,7 @@
 
 # Ignore Byebug command history file.
 .byebug_history
+
+# Ignore RubyMine user config settings
+/.idea/workspace.xml
+/.idea/tasks.xml
