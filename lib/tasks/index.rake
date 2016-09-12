@@ -17,7 +17,7 @@ namespace 'index' do
               'premium_date' => {type: 'date', index: 'not_analyzed', include_in_all: false},
               'capsule' => {type: 'string'},
               'tags' => {type: 'string', index: 'not_analyzed'},
-              'watched' => {type: 'boolean', index: 'not_analyzed'}
+              'watched' => {type: 'boolean', index: 'not_analyzed', null_value: false, include_in_all: false}
             }
           }
         }
@@ -57,7 +57,7 @@ namespace 'index' do
     client.indices.put_mapping index: 'movies', type: 'movie', body: {
       'movie' => {
         'properties' => {
-            'watched' => {type: 'boolean', index: 'not_analyzed'}
+            'watched' => {type: 'boolean', index: 'not_analyzed', null_value: false, include_in_all: false}
         }
       }
     }
