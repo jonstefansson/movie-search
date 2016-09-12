@@ -1,6 +1,32 @@
 #!/usr/bin/env bash
 curl \
 --request GET \
---data '{"query":{"match_all":{}},"sort":[{"release_date":{"order":"asc"}}],"from": 10,"size": 10}' \
+--data @- \
 --url http://localhost:9200/movies/_search \
-| jq '.'
+<<EOF | jq '.hits.hits | map_values({id: ._id, title: ._source.title})'
+{
+  "query": {
+    "bool": {
+      "must": {
+        "match_all": {}
+      },
+      "filter": {
+        "bool": {
+          "must_not": {
+            "term": {"watched": true}
+          }
+        }
+      }
+    }
+  },
+  "sort": [
+    {
+      "release_date": {
+        "order": "asc"
+      }
+    }
+  ],
+  "from": 0,
+  "size": 30
+}
+EOF
