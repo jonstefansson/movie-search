@@ -17,13 +17,13 @@
         <td><%= document.title %></td>
         <td><%= document.release_date %></td>
         <td style="text-align: center;">
-          <%= link_to document_path(document), class: 'ui primary tiny basic button' do %>
+          <%= link_to document_path(document), class: 'ui primary mini basic button' do %>
               Show
           <% end %>
-          <%= link_to edit_document_path(document), class: 'ui default tiny basic button' do %>
+          <%= link_to edit_document_path(document), class: 'ui default mini basic button' do %>
               Edit
           <% end %>
-          <%= link_to document, method: :delete, data: { confirm: 'Are you sure?' }, class: 'ui negative tiny basic button' do %>
+          <%= link_to document, method: :delete, data: { confirm: 'Are you sure?' }, class: 'ui negative mini basic button' do %>
               Delete
           <% end %>
         </td>
@@ -31,6 +31,8 @@
   <% end %>
   </tbody>
 </table>
+
+<%= paginate @documents %>
 
 <br>
 

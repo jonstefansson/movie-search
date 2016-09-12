@@ -52,3 +52,4 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 gem 'elasticsearch'
 gem 'elasticsearch-dsl'
 gem 'semantic-ui-sass', github: 'doabit/semantic-ui-sass'
+gem 'kaminari'

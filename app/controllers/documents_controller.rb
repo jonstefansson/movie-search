@@ -4,11 +4,14 @@ class DocumentsController < ApplicationController
   include Elasticsearch::DSL
   include SearchHelper
 
+  PAGE_SIZE = 10
+
   before_action :set_document, only: [:show, :edit, :update, :destroy]
 
   # GET /documents
   # GET /documents.json
   def index
+    page = (params[:page] || '1').to_i
     definition = search do
       sort do
         by :release_date, order: 'asc'
@@ -16,12 +19,13 @@ class DocumentsController < ApplicationController
       query do
         match_all
       end
+      from PAGE_SIZE * (page - 1)
     end
     response = client.search index: 'movies', body: definition
     hits = response.fetch('hits')
-    @documents = hits.fetch('hits').collect do |hit|
-      Document.new(hit_to_hash(hit))
-    end
+    @documents = Kaminari.paginate_array(
+        hits.fetch('hits').collect{ |hit| Document.new(hit_to_hash(hit)) }, total_count: hits['total']
+    ).page(page).per(10)
   end
 
   # GET /documents/1
