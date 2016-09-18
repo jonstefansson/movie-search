@@ -17,13 +17,14 @@ module SearchHelper
         blu_ray_date: hit['_source']['blu_ray_date'],
         premium_date: hit['_source']['premium_date'],
         capsule:      hit['_source']['capsule'],
-        watched:      !!hit['_source']['watched'],
+        watched:      hit['_source']['watched'],
         tags:         hit['_source']['tags']
     }
   end
 
-  def update_document(attributes)
-    client.update index: INDEX_NAME, type: INDEX_TYPE, id: id, body: {
+  def update_document(document)
+    attributes = Hash[document.changes.each.collect{|k,v| [k, v[1]]}]
+    client.update index: INDEX_NAME, type: INDEX_TYPE, id: document.id, body: {
         doc: attributes
     }
   end

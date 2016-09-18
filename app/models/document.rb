@@ -1,10 +1,24 @@
 class Document
   include ActiveModel::Model
   include ActiveModel::Dirty
+  include ActiveModel::AttributeAssignment
   include SearchHelper
 
-  attr_accessor :id, :title, :release_date, :vod_date, :blu_ray_date, :premium_date, :capsule, :watched, :tags
+  attr_reader :id, :title, :release_date, :vod_date, :blu_ray_date, :premium_date, :capsule, :watched, :tags
+
   define_attribute_methods :id, :title, :release_date, :vod_date, :blu_ray_date, :premium_date, :capsule, :watched, :tags
+
+  def initialize(attributes)
+    @id = attributes[:id]
+    @title = attributes[:title]
+    @release_date = attributes[:release_date]
+    @vod_date = attributes[:vod_date]
+    @blu_ray_date = attributes[:blu_ray_date]
+    @premium_date = attributes[:premium_date]
+    @capsule = attributes[:capsule]
+    @watched = attributes[:watched]
+    @tags = attributes[:tags]
+  end
 
   def id=(val)
     id_will_change! unless val == @id
@@ -42,8 +56,9 @@ class Document
   end
 
   def watched=(val)
-    watched_will_change! unless val == @watched
-    @watched = val
+    _watched = %w(true 1).include?(val)
+    watched_will_change! unless _watched == @watched
+    @watched = _watched
   end
 
   def tags=(val)

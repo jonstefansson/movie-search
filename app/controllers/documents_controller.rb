@@ -61,9 +61,9 @@ class DocumentsController < ApplicationController
   # PATCH/PUT /documents/1
   # PATCH/PUT /documents/1.json
   def update
-    logger.ap({source: 'DocumentsController#update', params: params, document_params: document_params}, :debug)
     respond_to do |format|
-      if true # @document.update(document_params)
+      @document.assign_attributes(document_params)
+      if update_document(@document)
         format.html { redirect_to document_path(@document.id), notice: 'Document was successfully updated.' }
         format.json { render :show, status: :ok, location: @document }
       else
@@ -92,7 +92,7 @@ class DocumentsController < ApplicationController
 
   # Never trust parameters from the scary internet, only allow the white list through.
   def document_params
-    params.fetch(:document, {}).permit(
+    document_params = params.fetch(:document, {}).permit(
         :id,
         :title,
         :capsule,
@@ -102,6 +102,10 @@ class DocumentsController < ApplicationController
         :premium_date,
         :watched,
         :tags)
+    [:release_date, :vod_date, :blu_ray_date, :premium_date].each do |date_key|
+      document_params[date_key] = nil if document_params[date_key].blank?
+    end
+    document_params
   end
 
 end
