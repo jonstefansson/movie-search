@@ -80,5 +80,6 @@
       <%= f.submit(form_options[:submit], class: 'ui button primary') %>
     <% end %>
     <%= link_to('Cancel', documents_path, html_options = {class: 'ui button secondary'}) %>
+    <%= link_to('Edit', edit_document_path(document), html_options = {class: 'ui button primary'}) unless params[:action] == 'edit' %>
   </div>
 <% end %>
