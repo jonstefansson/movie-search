@@ -85,10 +85,6 @@ class DocumentsController < ApplicationController
 
   private
 
-  def client
-    @client ||= Elasticsearch::Client.new log: true
-  end
-
   # Use callbacks to share common setup or constraints between actions.
   def set_document
     @document = Document.new(get_document_attributes(params[:id]))
