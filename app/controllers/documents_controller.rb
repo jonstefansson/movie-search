@@ -35,7 +35,7 @@ class DocumentsController < ApplicationController
 
   # GET /documents/new
   def new
-    @document = Document.new
+    @document = Document.new()
   end
 
   # GET /documents/1/edit
@@ -48,7 +48,8 @@ class DocumentsController < ApplicationController
     @document = Document.new(document_params)
 
     respond_to do |format|
-      if @document.save
+      if create_document(@document)
+        logger.ap({source: 'DocumentsController#create', document: @document}, :debug)
         format.html { redirect_to @document, notice: 'Document was successfully created.' }
         format.json { render :show, status: :created, location: @document }
       else
@@ -76,7 +77,7 @@ class DocumentsController < ApplicationController
   # DELETE /documents/1
   # DELETE /documents/1.json
   def destroy
-    @document.destroy
+    destroy_document(params[:id])
     respond_to do |format|
       format.html { redirect_to documents_url, notice: 'Document was successfully destroyed.' }
       format.json { head :no_content }

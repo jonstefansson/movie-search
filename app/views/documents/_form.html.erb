@@ -75,11 +75,21 @@
     <% end %>
   </div>
 
+  <div class="field">
+    <div class="ui right labeled left icon input">
+      <i class="tags icon"></i>
+      <%= text_field_tag 'tag', nil, placeholder: 'Enter tag', disabled: disabled %>
+      <a class="ui tag label">
+        Add Tag
+      </a>
+    </div>
+  </div>
+
   <div class="actions">
     <% unless disabled %>
       <%= f.submit(form_options[:submit], class: 'ui button primary') %>
     <% end %>
     <%= link_to('Cancel', documents_path, html_options = {class: 'ui button secondary'}) %>
-    <%= link_to('Edit', edit_document_path(document), html_options = {class: 'ui button primary'}) unless params[:action] == 'edit' %>
+    <%= link_to('Edit', edit_document_path(document), html_options = {class: 'ui button primary'}) unless %w(edit new).include? params[:action] %>
   </div>
 <% end %>

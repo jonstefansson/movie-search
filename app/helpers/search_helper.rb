@@ -29,6 +29,16 @@ module SearchHelper
     }
   end
 
+  def create_document(attributes)
+    attributes[:tags] = [] unless attributes.has_key?(:tags)
+    client.index index: INDEX_NAME, type: INDEX_TYPE, body: attributes
+  end
+
+  def destroy_document(id)
+    Rails.logger.ap({source: 'SearchHelper#destroy_document', id: id}, :debug)
+    client.delete index: INDEX_NAME, type: INDEX_TYPE, id: id
+  end
+
   def client
     @client ||= Elasticsearch::Client.new log: true
   end

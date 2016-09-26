@@ -8,7 +8,7 @@ class Document
 
   define_attribute_methods :id, :title, :release_date, :vod_date, :blu_ray_date, :premium_date, :capsule, :watched, :tags
 
-  def initialize(attributes)
+  def initialize(attributes={tags: [], watched: false})
     @id = attributes[:id]
     @title = attributes[:title]
     @release_date = attributes[:release_date]
